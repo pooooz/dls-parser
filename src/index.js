@@ -3,6 +3,7 @@ import { fileURLToPath } from 'url';
 
 import { getFileNames } from './getFileNames/index.js';
 import { parseAnswers } from './parseAnswers/index.js';
+import { generateAnswers } from './generateAnswers/index.js';
 
 const __filename = fileURLToPath(import.meta.url);
 export const __dirname = path.dirname(__filename);
@@ -13,4 +14,4 @@ const fileNames = await getFileNames(questionPath);
 
 const answers = await parseAnswers(questionPath, fileNames);
 
-console.log(answers);
+await generateAnswers(path.resolve(__dirname, '../results'), answers);
