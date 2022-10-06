@@ -24,7 +24,7 @@ export const parseAnswers = async (directoryPath, filenames) => {
       });
 
     const questions = successful.map((block) => ({
-      question: block.querySelector(`.${QUERY_CLASSNAME}`).innerText,
+      question: block.querySelector(`.${QUERY_CLASSNAME}`).innerText.replace(/\n/gi, ''),
       answer: block.querySelectorAll('input')
         .filter((elem) => elem.attributes.checked)
         .map((elem) => block.getElementById(`${elem.id}_label`).innerText)[0],
@@ -45,5 +45,6 @@ export const parseAnswers = async (directoryPath, filenames) => {
     questionsMap.set(question, successfulQuestions
       .find((elem) => elem.question === question).answer);
   });
-  console.log(questionsMap);
+
+  return questionsMap;
 };
