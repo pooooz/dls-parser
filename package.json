@@ -8,7 +8,9 @@
   "type": "module",
   "scripts": {
     "start": "node src/index.js",
-    "start:dev": "nodemon src/index.js"
+    "start:dev": "nodemon src/index.js",
+    "lint": "eslint --ext .js ./",
+    "lint:fix": "npx eslint --ext .js --fix ./"
   },
   "dependencies": {
     "node-html-parser": "^6.1.1"
